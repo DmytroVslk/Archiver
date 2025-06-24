@@ -12,18 +12,18 @@ public class ZipExtractCommand extends ZipCommand {
     @Override
     public void execute() throws Exception {
         try {
-            ConsoleHelper.writeMessage("Розпакування архіву.");
+            ConsoleHelper.writeMessage("Unpacking the archive.");
 
             ZipFileManager zipFileManager = getZipFileManager();
 
-            ConsoleHelper.writeMessage("Введіть шлях для розпакування:");
+            ConsoleHelper.writeMessage("Enter the path to unpack:");
             Path destinationPath = Paths.get(ConsoleHelper.readString());
             zipFileManager.extractAll(destinationPath);
 
             ConsoleHelper.writeMessage("Архів було розпаковано.");
 
         } catch (PathIsNotFoundException e) {
-            ConsoleHelper.writeMessage("Неверный путь для распаковки.");
+            ConsoleHelper.writeMessage("Incorrect path for unpacking.");
         }
     }
 }

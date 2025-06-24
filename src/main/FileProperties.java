@@ -31,7 +31,7 @@ public class FileProperties {
     }
 
     public long getCompressionRatio() {
-        // Обчислюємо ступінь стиснення
+        // Calculate the compression ratio
         return 100 - ((compressedSize * 100) / size);
     }
 
