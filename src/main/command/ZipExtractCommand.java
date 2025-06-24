@@ -7,6 +7,7 @@ import main.exception.PathIsNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+// Command to extract all files from the archive to a specified directory
 public class ZipExtractCommand extends ZipCommand {
     @Override
     public void execute() throws Exception {

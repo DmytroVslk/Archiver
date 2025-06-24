@@ -37,7 +37,7 @@ public class FileProperties {
 
     @Override
     public String toString() {
-        // Будуємо гарний рядок з властивостей
+        // Build a nice string from properties
         StringBuilder builder = new StringBuilder();
         builder.append(name);
         if (size > 0) {

@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+// Utility class for collecting and managing the list of files within a directory tree
 public class FileManager {
     private Path rootPath;
     private List<Path> fileList;
@@ -21,17 +22,18 @@ public class FileManager {
         return fileList;
     }
 
+    // Recursively collects all file paths starting from the given path
     private void collectFileList(Path path) throws IOException {
-        // Додаємо тільки файли
+        // Add files only
         if (Files.isRegularFile(path)) {
             Path relativePath = rootPath.relativize(path);
             fileList.add(relativePath);
         }
 
-        // Додаємо вміст директорії
+        // Add the contents of the directory
         if (Files.isDirectory(path)) {
-            // Рекурсивно проходимося по всьому вмісту директорії
-            // Щоб не писати код виклику close для DirectoryStream, обернемо виклик newDirectoryStream в try-with-resources
+            // Recursively traverse the entire directory
+            // To avoid writing the code to call close for DirectoryStream, wrap the call to newDirectoryStream in a try-with-resources
             try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path)) {
                 for (Path file : directoryStream) {
                     collectFileList(file);
